@@ -42,7 +42,7 @@ public class AsyncService {
 	public <T> Mono<T> excute(Callable<T> callable) {
 		return Mono.subscriberContext().flatMap(context -> 
 													{
-														return Mono.fromCallable(callable).subscribeOn(Schedulers.parallel()).publishOn(Schedulers.elastic());
+														return Mono.fromCallable(callable).subscribeOn(Schedulers.elastic()).publishOn(Schedulers.elastic());
 													}
 											   );
     }
