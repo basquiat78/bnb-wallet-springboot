@@ -1,0 +1,102 @@
+spring:
+  profiles:
+    active: testnet
+
+server:
+  error:
+    include-stacktrace: on-trace-param
+
+---
+spring:
+  profiles: testnet
+  jpa:
+    database: h2
+    hibernate.ddl-auto: update
+    show-sql: true
+
+datasource:
+  account-info:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+#logging
+logging:
+  file: logs/logging.log
+  level:
+    root: INFO
+    org:
+      springframework:
+        web: INFO
+  pattern:
+    # console에 찍히는 로그 형식 정의
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    # console에서 로그는 위에 형식으로 찍히지만 파일로 씌여질 때 해당 패턴으로 찍는다. 
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+#file info
+file:
+  path: blockinfo/info.txt
+
+# BNB address private key and mnemonic and etc
+bnb:
+  address: 'tbnb17rg2daudfezctq7c40rl04p0jktkglqczsjy6l'
+  gathering:
+    address: 'tbnb14l4ptym53gx2sr86372l8x5l4089ns3a3z4evx'
+  mnemonic: ''
+  prefix: tbnb
+  private:
+    key: ''
+
+# ScheduleConfiguration thread pool size setup
+thread:
+  pool:
+    size: 4
+
+# defaul schedule rate 5 second
+schedule:
+  deposit:
+    cron: '*/30 * * * * *'
+
+---
+spring:
+  profiles: mainnet
+
+#logging
+logging:
+  file: logs/mainnet-logging-file.log
+  level:
+    root: INFO
+    org:
+      springframework:
+        web: INFO
+  pattern:
+    # console에 찍히는 로그 형식 정의
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    # console에서 로그는 위에 형식으로 찍히지만 파일로 씌여질 때 해당 패턴으로 찍는다. 
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+#file info
+file:
+  path: blockinfo/info.txt
+
+# BNB address private key and mnemonic and etc
+bnb:
+  address: ''
+  gathering:
+    address: ''
+  mnemonic: ''
+  prefix: bnb
+  private:
+    key: ''
+
+# ScheduleConfiguration thread pool size setup
+thread:
+  pool:
+    size: 4
+
+# defaul schedule rate 5 second
+schedule:
+  deposit:
+    cron: '*/60 * * * * *'
