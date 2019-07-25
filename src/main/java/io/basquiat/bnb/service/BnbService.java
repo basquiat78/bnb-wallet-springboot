@@ -169,7 +169,7 @@ public class BnbService {
 																		log.info("[Withdraw Binance Coin] SUCCESS");
 																		TransactionMetadata transactionMetadata = listTm.get(0);
 																		BlockTransactions blockTransactions = this.createBlockTransactions(transactionMetadata, requestWithdraw);
-																		async.excute(() -> blockTransactionsRepo.save(blockTransactions)).subscribe();
+																		async.excuteJDBC(() -> blockTransactionsRepo.save(blockTransactions)).subscribe();
 																	}
 													   );
 		

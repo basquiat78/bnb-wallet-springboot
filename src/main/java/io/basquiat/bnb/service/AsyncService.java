@@ -4,9 +4,12 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
 
 /**
@@ -26,9 +29,12 @@ import reactor.core.scheduler.Schedulers;
 @Service("asyncService")
 public class AsyncService {
 
+	@Autowired
+	@Qualifier("jdbcScheduler")
+	private Scheduler jdbcScheduler;
+	   
 	/**
 	 * sync -> async using
-	 * 차후 jpa를 위해 사용할 코드
 	 * @param <T>
 	 * @param callable
 	 * @return Mono<T>
@@ -36,7 +42,21 @@ public class AsyncService {
 	public <T> Mono<T> excute(Callable<T> callable) {
 		return Mono.subscriberContext().flatMap(context -> 
 													{
-														return Mono.fromCallable(callable).subscribeOn(Schedulers.elastic());
+														return Mono.fromCallable(callable).subscribeOn(Schedulers.parallel()).publishOn(Schedulers.elastic());
+													}
+											   );
+    }
+	
+	/**
+	 * sync -> async using for JDBC
+	 * @param <T>
+	 * @param callable
+	 * @return Mono<T>
+	 */
+	public <T> Mono<T> excuteJDBC(Callable<T> callable) {
+		return Mono.subscriberContext().flatMap(context -> 
+													{
+														return Mono.fromCallable(callable).subscribeOn(Schedulers.parallel()).publishOn(jdbcScheduler);
 													}
 											   );
     }
