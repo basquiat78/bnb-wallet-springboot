@@ -51,7 +51,7 @@ public class ApiController {
 	 */
 	@GetMapping("/find")
 	public Flux<BlockTransactions> find() {
-		return async.excute(() -> blockTransactionsRepo.findAll()).flatMapMany(Flux::fromIterable);
+		return async.excuteJDBC(() -> blockTransactionsRepo.findAll()).flatMapMany(Flux::fromIterable);
 	}
 	
 	/**
