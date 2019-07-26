@@ -116,6 +116,11 @@
 			</exclusions>
 		</dependency>
 		
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
+		
 		<!-- 테스트용 차후 지울거 -->
 		<dependency>
 			<groupId>com.h2database</groupId>
