@@ -11,7 +11,8 @@ README.md 작성중....
 
 ## ReactorNettyWebSocketClient
 
-ReactorNettyWebSocketClient을 활용해서 소켓 통신으로 관련 정보를 리스너하고 있다가 이벤트 발생시 메세지를 받아서 처리하게 변경.
+WebFlux를 위해 ReactorNettyWebSocketClient을 활용한 소켓 통신으로 관련 정보를 리스너하고 있다가 이벤트 발생시 메세지를 받아서 처리하게 변경.
+
 
 현재는 이 부분을 그냥 HttpURLConnection으로 처리하고 있지만 차후 WebClient를 활용해서 만들 예정.
 
