@@ -18,6 +18,13 @@ import lombok.extern.slf4j.Slf4j;
 import reactor.core.Disposable;
 import reactor.core.scheduler.Schedulers;
 
+/**
+ * 
+ * NettyClient
+ * 
+ * created by basquiat
+ *
+ */
 @Slf4j
 public class NettyClient {
 	
