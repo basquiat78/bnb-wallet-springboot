@@ -49,6 +49,8 @@ bnb:
   prefix: tbnb
   private:
     key: ''
+  wss:
+    url: 'wss://testnet-dex.binance.org/api/ws/'
 
 # ScheduleConfiguration thread pool size setup
 thread:
@@ -103,6 +105,8 @@ bnb:
   prefix: bnb
   private:
     key: ''
+  wss:
+    url: 'wss://dex.binance.org/api/ws/'
 
 # ScheduleConfiguration thread pool size setup
 thread:
