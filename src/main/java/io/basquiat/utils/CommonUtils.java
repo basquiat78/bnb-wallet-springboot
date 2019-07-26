@@ -6,6 +6,8 @@ import java.math.BigDecimal;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import io.basquiat.common.code.CommonCode;
 
@@ -72,6 +74,17 @@ public class CommonUtils {
 		return object;
 	}
 
+	/**
+	 * convert string to JsonObject using Gson
+	 * @param content
+	 * @return JsonObject
+	 */
+	public static JsonObject convertObjectFromStringUsingGson(String content) {
+		JsonParser parser = new JsonParser();
+		JsonObject jsonObject = parser.parse(content).getAsJsonObject();
+		return jsonObject;
+	}
+	
 	/**
 	 * 수수료는 고정 0.000375 <--- 테스트넷은 이렇게 고정인데 메인넷은 확인해 봐야함.
 	 * @param balance

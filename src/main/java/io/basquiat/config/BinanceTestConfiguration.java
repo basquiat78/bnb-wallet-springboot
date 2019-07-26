@@ -80,7 +80,7 @@ public class BinanceTestConfiguration {
 	 * wallet for credential
 	 * @return Wallet
 	 */
-	@Bean
+	@Bean("wallet")
 	public Wallet wallet() {
 		return this.wallet;
 	}

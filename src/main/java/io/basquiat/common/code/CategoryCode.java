@@ -14,7 +14,34 @@ public enum CategoryCode {
 	RECEIVE("receive"),
 	
 	/** txType */
-	TRANSFER("transfer");
+	TRANSFER("transfer"),
+	
+	/** receive object key */
+	STREAM("stream"),
+	
+	/** receive object key */
+	DATA("data"),
+	
+	/** receive object key */
+	T("t"),
+	
+	/** receive object key */
+	O("o"),
+	
+	/** receive object key */
+	H("H"),
+	
+	/** method */
+	SUBSCRIBE("subscribe"),
+	
+	/** method */
+	GET("GET"),
+	
+	/** method */
+	RECONNECT("reconnect"),
+
+	/** websocket stream type */
+	TRANSFERS("transfers");
 	
 	/** code */
 	public String code;
